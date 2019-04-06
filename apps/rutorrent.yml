@@ -71,6 +71,9 @@
     - name: 'Deploying {{pgrole}}'
       docker_container:
         name: '{{pgrole}}'
+        depends_on:
+          - vpn
+        network_mode: "service:vpn"
         image: '{{image}}'
         pull: yes
         published_ports:
